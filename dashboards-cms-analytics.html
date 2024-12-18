@@ -1,0 +1,576 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <!-- Meta tags  -->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+     <title>StarCodeKh - CMS Analytics Dashboard</title>
+     <link rel="icon" type="image/png" href="images/favicon.png">
+
+     <!-- CSS Assets -->
+     <link rel="stylesheet" href="css/app.css">
+
+     <!-- Javascript Assets -->
+     <script src="js/app.js" defer=""></script>
+     <script src="js/index.js" defer=""></script>
+     <!-- Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link href="css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+     <script>
+          /**
+           * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
+           */
+          localStorage.getItem("_x_darkMode_on") === "true" &&
+               document.documentElement.classList.add("dark");
+     </script>
+</head>
+
+<body x-data="" class="is-header-blur" x-bind="$store.global.documentBody">
+     <!-- App preloader-->
+     <div class="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
+          <div class="app-preloader-inner relative inline-block size-48"></div>
+     </div>
+
+     <!-- Page Wrapper -->
+     <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak="">
+
+          <!-- App Header Wrapper-->
+          <nav class="header before:bg-none  dark:before:bg-none print:hidden">
+               <!-- App Header  -->
+               <div class="row  header-container  relative flex w-full bg-white dark:bg-navy-750 print:hidden">
+                    <!-- Header Items -->
+                    <div class="col-12 mt-3 p-0 flex w-full  flex-row items-center justify-between">
+                         <!-- Left: Sidebar Toggle Button -->
+                         <div class="col-4 ml-3">
+                              <div class="logo  flex flex-row align-center">
+                                   <div class="is-initial rounded-full size-14 border-gray-600 p-0.5 mr-3 border-2 ">
+                                        <img src="images/icons/basketball (4).png" class="" alt="" srcset="">
+                                   </div>
+                                   <div class="flex flex-col justify-center">
+                                        <span class='logo-text serif font-bold text-amber-400'>国家电网华东分公司</span>
+                                        <span class=" text-sm text-amber-400">East China Branch Of China State Grid Carp</span>
+
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- Middle: Header buttons -->
+                         <div class="col-4 w-full ps-0 ms-0 ">
+                              <!-- Collapsible wrapper -->
+                              <ul class="d-flex flex-row m-0 ">
+                                   <li class="nav-item">
+                                        <a href="#"
+                                             class="flex flex-row items-end justify-center rounded-lg  text-turquoise outline-none  duration-200 hover:text-[--base-navy] focus:bg-primary/20 active:text-amber-200  dark:text-[--base-navy] dark:hover:text-turquoise dark:focus:bg-navy-450 dark:active:bg-navy-900"
+                                             x-tooltip.placement.right="'Electricity'">
+                                             <svg class="size-7" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                  height="16" fill="currentColor" class="bi bi-lightning"
+                                                  viewBox="0 0 16 16">
+                                                  <path
+                                                       d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1z" />
+                                             </svg>
+                                             <span class="ml-2 text-sm">力量</span>
+                                        </a>
+
+                                   </li>
+                                   <li class="nav-item">
+                                        <a href="#"
+                                             class="flex flex-row items-end justify-center rounded-lg  text-amber-400 outline-none transition-colors duration-200 hover:text-turquoise focus:bg-primary/20 active:text-amber-200  dark:text-turquoise dark:hover:text-turquoise dark:focus:bg-navy-450 dark:active:bg-navy-900"
+                                             x-tooltip.placement.right="'Weather'">
+                                             <svg class="size-7" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                  height="16" fill="currentColor" class="bi bi-cloud-sun"
+                                                  viewBox="0 0 16 16">
+                                                  <path
+                                                       d="M7 8a3.5 3.5 0 0 1 3.5 3.555.5.5 0 0 0 .624.492A1.503 1.503 0 0 1 13 13.5a1.5 1.5 0 0 1-1.5 1.5H3a2 2 0 1 1 .1-3.998.5.5 0 0 0 .51-.375A3.5 3.5 0 0 1 7 8m4.473 3a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5z" />
+                                                  <path
+                                                       d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708zm1.734 3.374a2 2 0 1 1 3.296 2.198q.3.423.516.898a3 3 0 1 0-4.84-3.225q.529.017 1.028.129m4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377M14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z" />
+                                             </svg>
+                                             <span class="ml-2 text-sm">天气</span>
+                                        </a>
+
+                                   </li>
+                                   <li class=" nav-item ">
+                                        <a href="#"
+                                             class="flex flex-row items-end justify-center rounded-lg  text-amber-400 outline-none transition-colors duration-200 hover:text-turquoise focus:bg-primary/20 active:text-amber-200  dark:text-turquoise dark:hover:text-turquoise dark:focus:bg-navy-450 dark:active:bg-navy-900"
+                                             x-tooltip.placement.right="'Switch'">
+                                             <svg xmlns="http://www.w3.org/2000/svg" class="size-7" fill="currentColor"
+                                                  class="bi bi-shuffle" viewBox="0 0 16 16">
+                                                  <path fill-rule="evenodd"
+                                                       d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5" />
+                                                  <path
+                                                       d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192" />
+                                             </svg>
+                                             <span class="ml-2 text-sm">力量</span>
+                                        </a>
+
+                                   </li>
+                                   <li class="nav-item">
+                                        <a href="#"
+                                             class="flex flex-row items-end justify-center rounded-lg  text-amber-400 outline-none transition-colors duration-200 hover:text-turquoise focus:bg-primary/20 active:text-amber-200  dark:text-turquoise dark:hover:text-turquoise dark:focus:bg-navy-450 dark:active:bg-navy-900"
+                                             x-tooltip.placement.right="'Share'">
+                                             <svg class="size-6" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                  height="16" fill="currentColor" class="bi bi-share"
+                                                  viewBox="0 0 16 16">
+                                                  <path
+                                                       d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
+                                             </svg>
+                                             <span class="ml-2 text-sm">分享</span>
+                                        </a>
+
+                                   </li>
+                                   <li class="nav-item">
+                                        <a href="#"
+                                             class="flex flex-row items-end justify-center rounded-lg  text-amber-400 outline-none transition-colors duration-200 hover:text-turquoise focus:bg-primary/20 active:text-amber-200  dark:text-turquoise dark:hover:text-turquoise dark:focus:bg-navy-450 dark:active:bg-navy-900"
+                                             x-tooltip.placement.right="'Portfolio'">
+                                             <svg class="size-6" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                  height="16" fill="currentColor" class="bi bi-card-text"
+                                                  viewBox="0 0 16 16">
+                                                  <path
+                                                       d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                                                  <path
+                                                       d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
+                                             </svg>
+                                             <span class="ml-2 text-sm">文件</span>
+                                        </a>
+
+                                   </li>
+
+                              </ul>
+                         </div>
+
+
+                         <div class="col-3 -mr-1.5 flex items-center justify-end space-x-2">
+                              <!-- Dark Mode Toggle -->
+                              <button @click="$store.global.isDarkModeEnabled = !$store.global.isDarkModeEnabled"
+                                   class="btn size-7 mr-3  p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                                   <svg x-show="$store.global.isDarkModeEnabled"
+                                        x-transition:enter="transition-transform duration-200 ease-out absolute origin-top"
+                                        x-transition:enter-start="scale-75" x-transition:enter-end="scale-100 static"
+                                        class="size-7 text-amber-400" fill="currentColor" viewbox="0 0 24 24">
+                                        <path
+                                             d="M11.75 3.412a.818.818 0 01-.07.917 6.332 6.332 0 00-1.4 3.971c0 3.564 2.98 6.494 6.706 6.494a6.86 6.86 0 002.856-.617.818.818 0 011.1 1.047C19.593 18.614 16.218 21 12.283 21 7.18 21 3 16.973 3 11.956c0-4.563 3.46-8.31 7.925-8.948a.818.818 0 01.826.404z">
+                                        </path>
+                                   </svg>
+                                   <svg xmlns="http://www.w3.org/2000/svg" x-show="!$store.global.isDarkModeEnabled"
+                                        x-transition:enter="transition-transform duration-200 ease-out absolute origin-top"
+                                        x-transition:enter-start="scale-75" x-transition:enter-end="scale-100 static"
+                                        class="size-6 text-amber-400" viewbox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                             d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                             clip-rule="evenodd"></path>
+                                   </svg>
+                              </button>
+
+                              <!-- Right Sidebar Toggle -->
+                              <button
+                                   class="btn size-6  mr-3   p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+
+                                   <img src="images/icons/power-on.png" class="" alt="" srcset="">
+                              </button>
+                              <button
+                                   class="btn size-7  mr-3   p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                                   <img src="./images/icons/dashboard (3).png" alt="">
+                              </button>
+
+                         </div>
+                    </div>
+               </div>
+          </nav>
+          <!-- Main Content Wrapper -->
+          <main class="main-content w-full pb-5 mx-4">
+               <div
+                    class="mt-1 grid grid-cols-12 gap-2 pl-4  transition-all duration-[.25s] sm:mt-5 sm:gap-3 lg:mt-6 lg:gap-3">
+                    <div class="col-span-12 lg:col-span-4 ">
+                         <div class="flex flex-col items-center justify-between space-x-2 h-100">
+                              <div class="col-span-12 lg:col-span-4">
+                                   <div class="card col-span-12 sm:col-span-6">
+                                        <div class="mb-3 flex items-center justify-between px-4  sm:px-5">
+                                             <div
+                                                  class=" mt-4 px-1  flex grow  border-bottom-card  items-center justify-between sm:px-5">
+                                                  <div class="flex mb-3  items-center space-x-2">
+                                                       <span class="text-lg text-amber-400">Data Monitoring</span>
+
+                                                       <span class="text-turquoise">数据监控</span>
+                                                  </div>
+                                                  <span href="#"
+                                                       class=" mb-3 text-xl font-semibold text-amber-400 transition-colors duration-300 ">8867
+                                                       字</span>
+                                             </div>
+
+                                        </div>
+                                        <div class="card-head mx-3 mb-4 flex items-center justify-between">
+                                             <div
+                                                  class="count flex justify-center align-center bg-[--base-gray] px-3 py-2">
+                                                  <span>1</span>
+
+                                             </div>
+
+                                             <div class="flex flex-1 px-3  items-center  justify-between">
+                                                  <div class="d-flex">
+                                                       <h6 class="m-0 mr-2">Social Condition </h6>
+                                                       <span class="text-xs">社会状况</span>
+                                                  </div>
+                                                  <div class="">
+                                                       <span class="text-xs">3232.3</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 gap-4 px-4 sm:gap-5 sm:px-5 lg:grid-cols-2">
+                                             <div class=" card-border  p-4 dark:border-navy-600">
+
+                                                  <div class="flex justify-between">
+
+                                                       <div>
+                                                            <span
+                                                                 class="text-2xl font-medium text-slate-700 dark:text-navy-100">393</span>
+                                                            <span class="text-xs">Mb</span>
+                                                       </div>
+                                                       <p class="text-xs+">随机数</p>
+
+                                                  </div>
+                                                  <div class="progress mt-3 h-1.5 bg-slate-150 dark:bg-navy-500">
+                                                       <div
+                                                            class="is-active relative w-8/12 overflow-hidden rounded-full bg-success">
+                                                       </div>
+                                                  </div>
+                                                  <div
+                                                       class="mt-2 flex justify-between text-xs text-slate-400 dark:text-navy-300">
+                                                       <p>Monthly target</p>
+                                                       <p>17%</p>
+                                                  </div>
+                                             </div>
+                                             <div class="rounded-lg p-2.5  dark:bg-navy-600">
+                                                  <div class="flex items-center space-x-2">
+                                                       <img class="size-10" src="./images/solana.svg" alt="image">
+                                                       <div>
+                                                            <h6 class="font-medium tracking-wide  dark:text-navy-900">
+                                                                 图表分析
+                                                            </h6>
+                                                       </div>
+                                                  </div>
+
+                                                  <div class="ax-transparent-gridline">
+                                                       <div
+                                                            x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.stockMarket2); $el._x_chart.render() });">
+                                                       </div>
+                                                  </div>
+
+                                                  <div class="mt-2 flex items-center justify-between">
+                                                       <p
+                                                            class="font-medium tracking-wide text-slate-700 dark:text-navy-100">
+                                                            20.56$
+                                                       </p>
+                                                       <p class="text-xs font-medium tracking-wide text-success">
+                                                            +4.11%
+                                                       </p>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                   </div>
+                              </div>
+                              <div class="col-span-12 lg:col-span-4 mt-8 ">
+                                   <div class="card col-span-12 sm:col-span-6">
+
+                                        <div class="card-head mx-3 mb-4 flex items-center justify-between">
+                                             <div
+                                                  class="count flex justify-center align-center bg-[--base-gray] px-3 py-2">
+                                                  <span>1</span>
+
+                                             </div>
+
+                                             <div class="flex flex-1 px-3  items-center  justify-between">
+                                                  <div class="d-flex">
+                                                       <h6 class="m-0 text-md mr-2">Power Grid Construction </h6>
+                                                       <span class="text-xs">社会状况</span>
+                                                  </div>
+                                                  <div class="">
+                                                       <span class="text-xs">3232.3</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 gap-4 px-4 sm:gap-5 sm:px-5 lg:grid-cols-2">
+                                             <div class=" card-border  p-4 dark:border-navy-600">
+                                                  <div class="flex justify-between">
+                                                       <div>
+                                                            <span
+                                                                 class="text-2xl font-medium text-slate-700 dark:text-navy-100">393</span>
+                                                            <span class="text-xs">Mb</span>
+                                                       </div>
+                                                       <p class="text-xs+">随机数</p>
+
+                                                  </div>
+
+
+                                                  <div class="progress mt-3 h-1.5 bg-slate-150 dark:bg-navy-500">
+                                                       <div
+                                                            class="is-active relative w-8/12 overflow-hidden rounded-full bg-success">
+                                                       </div>
+                                                  </div>
+                                                  <div
+                                                       class="mt-2 flex justify-between text-xs text-slate-400 dark:text-navy-300">
+                                                       <p>Monthly target</p>
+                                                       <p>17%</p>
+                                                  </div>
+
+                                             </div>
+
+                                             <div class="rounded-lg bg-slate-100 p-2.5 dark:bg-navy-600">
+                                                  <div class="flex items-center space-x-2">
+                                                       <img class="size-10" src="./images/solana.svg" alt="image">
+                                                       <div>
+                                                            <h6
+                                                                 class="font-medium tracking-wide text-slate-700 dark:text-navy-100">
+                                                                 图表分析
+                                                            </h6>
+
+                                                       </div>
+                                                  </div>
+
+                                                  <div class="ax-transparent-gridline">
+                                                       <div
+                                                            x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.stockMarket1); $el._x_chart.render() });">
+                                                       </div>
+                                                  </div>
+
+                                                  <div class="mt-2 flex items-center justify-between">
+                                                       <p
+                                                            class="font-medium tracking-wide text-slate-700 dark:text-navy-100">
+                                                            60.33$
+                                                       </p>
+                                                       <p class="text-xs font-medium tracking-wide text-success">
+                                                            +3.3%
+                                                       </p>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                         </div>
+                    </div>
+
+                    <div class="col-span-12 lg:col-span-4 mx-2">
+                         <div class="card col-span-12 sm:col-span-6 h-100">
+                              <div class="card-header  mt-0 p-0 col-span-12 sm:col-span-6  mb-3">
+                                   <div class="p-1 d-flex flex-col align-center w-full
+                                        justify-center text-amber-400 dark:text-[--base-navy]">
+
+                                        <h5 class='serif font-bold mb-0 text-sm align-self-center tracking-wider '>
+                                             国家电网华东分公司
+                                        </h5>
+                                        <span class=" text-sm align-self-center">East China Branch Of China State Grid
+                                             Carp</span>
+
+                                   </div>
+                                   <div class="conner top left"></div>
+                                   <div class="conner top right"></div>
+                                   <div class="conner bottom left"></div>
+                                   <div class="conner bottom right"></div>
+                              </div>
+                              <div class="card-body  mt-0 p-1 col-span-12 sm:col-span-6">
+                                   <div class="p-1 d-flex flex-col align-center 
+                                        justify-center h-full">
+                                        <img src="./images/Sample 1 (1) copy.jpg" class="h-full img-analysis" alt="">
+                                   </div>
+                                   <div class="conner top left"></div>
+                                   <div class="conner top right"></div>
+                                   <div class="conner bottom left"></div>
+                                   <div class="conner bottom right"></div>
+                              </div>
+
+                         </div>
+                    </div>
+
+                    <div class="col-span-12 lg:col-span-4 mx-2">
+                         <div class="card col-span-12 sm:col-span-6 h-100">
+                              <div class="col-span-12 lg:col-span-4">
+                                   <div class="card col-span-12 sm:col-span-6">
+                                        <div class="mb-3 flex items-center justify-between px-4  sm:px-5">
+                                             <div
+                                                  class=" mt-4 px-1  flex grow  border-bottom-card  items-center justify-between sm:px-5">
+                                                  <div class="flex mb-0  items-center space-x-2">
+                                                       <span class="text-lg text-amber-400">Current Time</span>
+
+                                                       <span class="text-turquoise">数据监控</span>
+                                                  </div>
+                                                  <span href="#"
+                                                       class=" mb-3 text-xl font-semibold text-[--base-gray] transition-colors duration-300 ">
+                                                       <div class="d-flex flex-col  align-end">
+                                                            <span class="text-2xl align-self-end text-amber-400" id="time"></span>
+                                                            <span class="text-amber-400" id="date"></span>
+                                                       </div>
+                                                  </span>
+                                             </div>
+
+                                        </div>
+                                        <div class="card-head mx-3 mb-4 flex items-center justify-between">
+                                             <div
+                                                  class="count flex justify-center align-center bg-[--base-gray] px-3 py-2">
+                                                  <span>1</span>
+
+                                             </div>
+
+                                             <div class="flex flex-1 px-3  items-center  justify-between">
+                                                  <div class="d-flex">
+                                                       <h6 class="m-0 mr-2">Power Generation </h6>
+                                                       <span class="text-xs">社会状况</span>
+                                                  </div>
+                                                  <div class="">
+                                                       <span class="text-xs">3232.3</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 gap-4 pr-4 pl-2 sm:gap-5 sm:px-5 lg:grid-cols-2">
+                                             <div class=" flex flex-row p-1 border-0">
+                                                  <div class="flex flex-col align-center justify-center  flex-1">
+                                                       <img class="size-12" src="./images/icons/air-pollution.png"
+                                                            alt="">
+                                                       <span class="text-turquoise text-sm ">45%</span>
+                                                  </div>
+                                                  <div class="flex flex-col align-center justify-center  flex-1 mt-2">
+                                                       <img class="size-9" src="./images/icons/extraction.png" alt="">
+                                                       <span class="text-turquoise text-sm">45%</span>
+                                                  </div>
+                                                  <div class="flex flex-col align-center justify-center  flex-1">
+                                                       <img class="size-12" src="./images/icons/nuclear-plant.png"
+                                                            alt="">
+                                                       <span class="text-turquoise text-sm ">45%</span>
+                                                  </div>
+
+
+                                             </div>
+                                             <div class=" card-border  p-4 dark:border-navy-600">
+                                                  <div class="flex justify-between">
+                                                       <div>
+                                                            <span
+                                                                 class="text-2xl font-medium text-slate-700 dark:text-navy-100">393</span>
+                                                            <span class="text-xs">Mb</span>
+                                                       </div>
+                                                       <p class="text-xs+">随机数</p>
+
+                                                  </div>
+
+
+                                                  <div class="progress mt-3 h-1.5 bg-slate-150 dark:bg-navy-500">
+                                                       <div
+                                                            class="is-active relative w-8/12 overflow-hidden rounded-full bg-success">
+                                                       </div>
+                                                  </div>
+                                                  <div
+                                                       class="mt-2 flex justify-between text-xs text-slate-400 dark:text-navy-300">
+                                                       <p>Monthly target</p>
+                                                       <p>17%</p>
+                                                  </div>
+
+                                             </div>
+                                        </div>
+
+                                   </div>
+                              </div>
+                              <div class="col-span-12 lg:col-span-4 mt-8 ">
+                                   <div class="card col-span-12 sm:col-span-6">
+                                        <div class="card-head mx-3 mb-4 flex items-center justify-between">
+                                             <div
+                                                  class="count flex justify-center align-center bg-[--base-gray] px-3 py-2">
+                                                  <span>1</span>
+
+                                             </div>
+
+                                             <div class="flex flex-1 px-3  items-center  justify-between">
+                                                  <div class="d-flex">
+                                                       <h6 class="m-0 mr-2">Managment Analysis </h6>
+                                                       <span class="text-xs">社会状况</span>
+                                                  </div>
+                                                  <div class="">
+                                                       <span class="text-xs">3232.3</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 gap-4 px-4 sm:gap-5 sm:px-5 lg:grid-cols-2">
+                                             <div class="card ">
+                                                 
+                                                  <div class="px-4 py-2 sm:px-5 flex flex-col align-center justify-center">
+                                                  
+                                                    <h3 class="pt-2 text-base font-medium  align-self-center text-slate-700 dark:text-navy-100">
+                                                       财务图表
+                                                    </h3>
+                                                 
+                                                    <div class="mt-2 flex items-center space-x-4">
+                                                      <div class="w-9/10">
+                                                        <div class="ax-transparent-gridline" x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.blogAuthors1); $el._x_chart.render() });"></div>
+                                                      </div>
+                                                     
+                                                    </div>
+                                              
+                                                  </div>
+                                                
+                                                </div>
+
+                                                <div class=" card-border  p-4 dark:border-navy-600">
+                                                  <div class="flex justify-between">
+                                                       <div>
+                                                            <span
+                                                                 class="text-2xl font-medium text-slate-700 dark:text-navy-100">393</span>
+                                                            <span class="text-xs">Mb</span>
+                                                       </div>
+                                                       <p class="text-xs+">随机数</p>
+
+                                                  </div>
+
+
+                                                  <div class="progress mt-3 h-1.5 bg-secondary/15 dark:bg-secondary-light/25">
+                                                       <div class="is-active relative w-8/12 overflow-hidden rounded-full bg-secondary dark:bg-secondary-light"></div>
+                                                     </div>
+                                                  <div
+                                                       class="mt-2 flex justify-between text-xs text-slate-400 dark:text-navy-300">
+                                                       <p>Monthly target</p>
+                                                       <p>17%</p>
+                                                  </div>
+
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                         </div>
+                    </div>
+
+
+               </div>
+          </main>
+     </div>
+
+
+
+
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous"></script>
+     <script>
+
+          window.addEventListener("DOMContentLoaded", () => Alpine.start());
+     </script>
+</body>
+
+</html>
